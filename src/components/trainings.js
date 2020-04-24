@@ -6,8 +6,7 @@ import Showcustomer from './showcustomer';
 export default function Trainings() {
 
     const [trainings, setTrainings] = useState([]);
-    const [customerName, setCustomerName] = useState("");
-
+    
     useEffect(() => {
         getTrainings();
     }, [])
@@ -16,8 +15,16 @@ export default function Trainings() {
         fetch("https://customerrest.herokuapp.com/api/trainings")
         .then(response => response.json())
         .then(data => setTrainings(data.content))
+        .then(_ => changeDateFormat())
         .catch(err => console.error(err))
 
+    }
+
+    const changeDateFormat = () => {
+        for (var i = 0; i <= trainings.length; i++) {
+            console.log(trainings[0].date)
+            setTrainings({...trainings[i], date: trainings[i].date.getDate()})
+        }  
     }
 
     const columns = [

@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Customers from './components/customers';
 import Trainings from './components/trainings';
@@ -13,13 +12,26 @@ import Checkbox from '@material-ui/core/Checkbox';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
 
 function App() {
+
   const [checked, setChecked] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(date.getHours())
+
+  useEffect(() => {
+    setDarkmodeAutomatically();
+  }, [])
+
+  const setDarkmodeAutomatically = () => {
+    if(time >= 21 || time < 7) {
+      setChecked(true)
+    }
+  }
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
-  if (checked == false) {
+  if (checked === false) {
     return (
       <div className="App">
         <Router>
