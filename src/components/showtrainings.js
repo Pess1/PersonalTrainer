@@ -48,7 +48,7 @@ export default function Showtrainings(props) {
 
     return (
         <div>
-            <Button size="small" color="primary" onClick={handleClickOpen}>Show Trainings</Button>
+            <Button variant="outlined" size="small" color="primary" onClick={handleClickOpen}>Show Trainings</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Customer Trainings</DialogTitle>
                 <DialogContent>
