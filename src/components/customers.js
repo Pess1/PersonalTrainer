@@ -51,7 +51,7 @@ export default function Customers() {
         {
             Header: "Customer Trainings",
             Cell: row => (
-                <Showtrainings trainings={row} />
+                <Showtrainings trainings={row.original} />
             )
         }
     ]

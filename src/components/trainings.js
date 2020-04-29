@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import ReactTable from 'react-table-v6';
 import 'react-table-v6/react-table.css';
 import Showcustomer from './showcustomer';
+import Moment from 'react-moment';
 
 export default function Trainings() {
 
@@ -15,22 +16,18 @@ export default function Trainings() {
         fetch("https://customerrest.herokuapp.com/api/trainings")
         .then(response => response.json())
         .then(data => setTrainings(data.content))
-        .then(_ => changeDateFormat())
         .catch(err => console.error(err))
 
-    }
-
-    const changeDateFormat = () => {
-        for (var i = 0; i <= trainings.length; i++) {
-            console.log(trainings[0].date)
-            setTrainings({...trainings[i], date: trainings[i].date.getDate()})
-        }  
     }
 
     const columns = [
         {
             Header: "Date",
-            accessor: "date"
+            Cell: row => (
+                <Moment format="DD.MM.YYYY">
+                    {row.original.date}
+                </Moment>
+            )
         },
         {
             Header: "Duration",
@@ -43,14 +40,14 @@ export default function Trainings() {
         {
             Header: "Customer",
             Cell: row => (
-                <Showcustomer customer={row} />
+                <Showcustomer customer={row.original} />
             )
         },
     ]
 
     return (
         <div>
-            <ReactTable filterable={true} defaultPageSize={15} data={trainings} columns={columns}/>
+            <ReactTable filterable={true} defaultPageSize={20} data={trainings} columns={columns}/>
         </div>
     );
 }

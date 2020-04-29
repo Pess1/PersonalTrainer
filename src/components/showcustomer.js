@@ -20,18 +20,14 @@ export default function Showcustomer(props) {
 
     const [open, setOpen] = React.useState(false);
 
-    useEffect(() => {
-        getCustomerName();
-    }, [])
-    
-    const getCustomerName = () => {
-        fetch(props.customer.original.links[2].href)
+    const handleClickOpen = () => {
+        fetch(props.customer.links[2].href)
         .then(response => response.json())
         .then(data => setCustomer(
             {
                 firstname: data.firstname, 
                 lastname: data.lastname,
-                address: data.address,
+                address: data.streetaddress,
                 postcode: data.postcode,
                 city: data.city,
                 email: data.email,
@@ -39,10 +35,6 @@ export default function Showcustomer(props) {
             }
         ))
         .catch(err => console.error(err))
-
-    }
-
-    const handleClickOpen = () => {
         setOpen(true);
     };
 
@@ -52,17 +44,23 @@ export default function Showcustomer(props) {
 
     return (
         <div>
-            <Button variant="outlined" size="small" style={{color:"#5c7cfa", borderColor:"#5c7cfa", border:"2px solid"}} onClick={handleClickOpen}>{customer.firstname} {customer.lastname}</Button>
+            <Button variant="outlined" size="small" style={{color:"#5c7cfa", borderColor:"#5c7cfa", border:"2px solid"}} onClick={handleClickOpen}>
+                Show Customer
+            </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Customer Details</DialogTitle>
                 <DialogContent>
-                    <p>{customer.firstname}</p>
-                    <p>{customer.lastname}</p>
-                    <p>{customer.address}</p>
-                    <p>{customer.postcode}</p>
-                    <p>{customer.city}</p>
-                    <p>{customer.email}</p>
-                    <p>{customer.phone}</p>
+                    <table>
+                        <tr>
+                            <td>Name: {customer.firstname} {customer.lastname}</td>
+                        </tr>
+                        <tr>
+                            <td>Address: {customer.address}, {customer.postcode}, {customer.city}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact: {customer.email}, {customer.phone}</td>
+                        </tr>
+                    </table>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
