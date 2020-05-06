@@ -22,7 +22,7 @@ function App() {
   }, [])
 
   const setDarkmodeAutomatically = () => {
-    if(time >= 21 || time < 7) {
+    if(time >= 20 || time < 7) {
       setChecked(true)
     }
   }
