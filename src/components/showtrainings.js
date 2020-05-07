@@ -17,9 +17,9 @@ export default function Showtrainings(props) {
 
     const handleClickOpen = () => {
         fetch(props.trainings.links[2].href)
-        .then(response => response.json())
-        .then(data => setTraining(data.content))
-        .catch(err => console.error(err))
+            .then(response => response.json())
+            .then(data => setTraining(data.content))
+            .catch(err => console.error(err))
 
         setOpen(true);
         console.log(props.trainings)
@@ -32,7 +32,7 @@ export default function Showtrainings(props) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(training)
         })
-        .then(response => props.refresh())
+        .then(response => handleClickOpen())
         .then(_ => {
             setMsg("New Training Added!");
             setSnackOpen(true)
@@ -45,13 +45,14 @@ export default function Showtrainings(props) {
             fetch(url, {
                 method: "DELETE"
             })
-            .then(response => props.refresh())
+            .then(response => handleClickOpen())
             .then(_ => {
-                setMsg("Customer deleted!");
+                setMsg("Training deleted!");
                 setOpen(true);
             })
             .catch(err => console.error(err))
         }
+        
     }
 
     const handleClose = () => {
@@ -66,7 +67,7 @@ export default function Showtrainings(props) {
         {
             Header: "Date",
             Cell: row => (
-                <Moment format="DD.MM.YYYY">
+                <Moment format="DD.MM.YYYY HH:mm">
                     {row.original.date}
                 </Moment>
             )
@@ -89,7 +90,7 @@ export default function Showtrainings(props) {
 
     return (
         <div>
-            <Button variant="outlined" size="small" style={{color:"#5c7cfa", border: "none"}} onClick={handleClickOpen}>Trainings</Button>
+            <Button variant="outlined" size="small" style={{color:"#5b96f5", border: "none", fontWeight:"bold"}} onClick={handleClickOpen}>Trainings</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Customer Trainings</DialogTitle>
                 <DialogContent>

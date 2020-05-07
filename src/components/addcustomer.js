@@ -46,7 +46,7 @@ export default function Addcustomer(props) {
 
     return (
         <div>
-            <Button style={{margin: 10}} variant="outlined" style={{color: "#37bd7a", border: "none"}} onClick={handleClickOpen}>
+            <Button variant="outlined" size="small" style={{color: "#37bd7a", border:"1px solid", borderColor:"#37bd7a", margin: 10}} onClick={handleClickOpen}>
                 New Customer
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

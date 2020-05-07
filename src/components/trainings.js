@@ -31,7 +31,7 @@ export default function Trainings() {
             })
             .then(response => getTrainings())
             .then(_ => {
-                setMsg("Customer deleted!");
+                setMsg("Training deleted!");
                 setOpen(true);
             })
             .catch(err => console.error(err))
@@ -46,7 +46,7 @@ export default function Trainings() {
         {
             Header: "Date",
             Cell: row => (
-                <Moment format="DD.MM.YYYY">
+                <Moment format="DD.MM.YYYY HH:mm">
                     {row.original.date}
                 </Moment>
             )
@@ -68,7 +68,7 @@ export default function Trainings() {
         {
             accessor: "links[0].href",
             Cell: row => (
-                <Button color="secondary" size="small" onClick={() => deleteTraining(row.value)}>Delete</Button>
+                <Button color="secondary" size="small" style={{fontWeight:"bold"}} onClick={() => deleteTraining(row.value)}>Delete</Button>
             )
         }
     ]

@@ -114,7 +114,7 @@ export default function Customers() {
         {
             accessor: "links[0].href",
             Cell: row => (
-                <Button color="secondary" size="small" onClick={() => deleteCustomer(row.value)}>Delete</Button>
+                <Button color="secondary" size="small" style={{fontWeight: "bold"}} onClick={() => deleteCustomer(row.value)}>Delete</Button>
             )
         }
     ]

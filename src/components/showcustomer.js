@@ -44,7 +44,7 @@ export default function Showcustomer(props) {
 
     return (
         <div>
-            <Button variant="outlined" size="small" style={{color:"#5c7cfa", borderColor:"#5c7cfa", border:"none"}} onClick={handleClickOpen}>
+            <Button variant="outlined" size="small" style={{color:"#5b96f5", fontWeight:"bold", border:"none"}} onClick={handleClickOpen}>
                 Customer
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
