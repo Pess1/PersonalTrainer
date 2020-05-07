@@ -11,6 +11,9 @@ import {
     DateTimePicker,
   } from '@material-ui/pickers';
 import Moment from 'react-moment';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 export default function Addtrainigs(props) {
     const [open, setOpen] = React.useState(false);
@@ -71,6 +74,10 @@ export default function Addtrainigs(props) {
         setTraining({...training, [event.target.name]: event.target.value});
     }
 
+    const durationChanged = (event, newValue) => {
+        setTraining({...training, duration: newValue})
+    }
+
     return (
         <div>
             <Button style={{margin: 10}} variant="outlined" style={{color: "#37bd7a", border: "none"}} onClick={handleClickOpen}>
@@ -80,15 +87,22 @@ export default function Addtrainigs(props) {
                 <DialogTitle id="form-dialog-title">Add new training</DialogTitle>
                 <DialogContent>
                     <ShowCalendar />
-                    <TextField
-                        autoFocus
-                        margin="dense"
+                    <Typography variant="caption" display="block" id="discrete-slider" gutterBottom>
+                        Duration (Minutes)
+                    </Typography>
+                    <Slider
+                        defaultValue={30}
+                        aria-labelledby="discrete-slider"
+                        valueLabelDisplay="auto"
+                        step={5}
+                        marks
+                        min={5}
+                        max={300}
                         id="name"
                         label="Duration"
                         name="duration"
                         value={training.duration}
-                        onChange={e => inputChanged(e)}
-                        fullWidth
+                        onChange={durationChanged}
                     />
                     <TextField
                         autoFocus
