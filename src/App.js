@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Customers from './components/customers';
 import Trainings from './components/trainings';
+import TrainingCalendar from './components/calendar';
+import Stats from './components/stats';
 import Navigator from './components/navigator';
 import Checkbox from '@material-ui/core/Checkbox';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
@@ -51,6 +53,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Customers} />
               <Route path="/Trainings" component={Trainings} />
+              <Route path="/Calendar" component={TrainingCalendar} />
+              <Route path="/Stats" component={Stats} />
               <Route render={() => <h1>Page not found!</h1>} />
             </Switch>
           </div>
@@ -79,6 +83,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Customers} />
             <Route path="/Trainings" component={Trainings} />
+            <Route path="/Calendar" component={TrainingCalendar} />
+            <Route path="/Stats" component={Stats} />
             <Route render={() => <h1>Page not found!</h1>} />
           </Switch>
         </div>

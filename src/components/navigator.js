@@ -13,6 +13,12 @@ export default function Navigator() {
                 <li className="nav-item">
                     <Link className="nav-link" to="/Trainings">Trainings</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/Calendar">Calendar</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/Stats">Statistics</Link>
+                </li>
             </ul >
         </div>
         

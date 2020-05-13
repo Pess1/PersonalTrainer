@@ -122,7 +122,12 @@ export default function Customers() {
     return (
         <div>
             <Addcustomer addCustomer={addCustomer}/>
-            <ReactTable filterable={true} defaultPageSize={15} data={customers} columns={columns}/>
+            <ReactTable 
+                filterable={true} 
+                defaultPageSize={20} 
+                data={customers} 
+                columns={columns}
+            />
             <Snackbar
                 open={open}
                 autoHideDuration={4000}

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import ReactTable from 'react-table-v6';
+import 'react-table-v6/react-table.css';
 
 export default function Showcustomer(props) {
     const [customer, setCustomer] = useState(
@@ -18,9 +16,11 @@ export default function Showcustomer(props) {
         }
     );
 
-    const [open, setOpen] = React.useState(false);
+    useEffect(() => {
+        getData();
+    }, [])
 
-    const handleClickOpen = () => {
+    const getData = () => {
         fetch(props.customer.links[2].href)
         .then(response => response.json())
         .then(data => setCustomer(
@@ -35,40 +35,18 @@ export default function Showcustomer(props) {
             }
         ))
         .catch(err => console.error(err))
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
     };
 
     return (
-        <div>
-            <Button variant="outlined" size="small" style={{color:"#5b96f5", fontWeight:"bold", border:"none"}} onClick={handleClickOpen}>
-                Customer
-            </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Customer Details</DialogTitle>
-                <DialogContent>
-                    <table>
-                        <tr>
-                            <td>Name: {customer.firstname} {customer.lastname}</td>
-                        </tr>
-                        <tr>
-                            <td>Address: {customer.address}, {customer.postcode}, {customer.city}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact: {customer.email}, {customer.phone}</td>
-                        </tr>
-                    </table>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>     
+        <div style={{paddingLeft: "22vw", backgroundColor: "#d1d1d1", color: "black"}}>
+            <table>
+                <tr>
+                    <td style={{paddingRight: "5vw"}}>Name: {customer.firstname} {customer.lastname}</td>
+                    <td style={{paddingRight: "5vw"}}>Address: {customer.address}, {customer.postcode}, {customer.city}</td>
+                    <td style={{paddingRight: "5vw"}}>Contact: {customer.email} {customer.phone}</td>
+                </tr>
+            </table>
+        </div> 
     )
 
 

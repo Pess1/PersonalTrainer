@@ -49,7 +49,9 @@ export default function Trainings() {
                 <Moment format="DD.MM.YYYY HH:mm">
                     {row.original.date}
                 </Moment>
-            )
+            ),
+            filterable: false
+            
         },
         {
             Header: "Duration",
@@ -58,12 +60,6 @@ export default function Trainings() {
         {
             Header: "Activity",
             accessor: "activity"
-        },
-        {
-            Header: "Customer",
-            Cell: row => (
-                <Showcustomer customer={row.original} />
-            )
         },
         {
             accessor: "links[0].href",
@@ -75,7 +71,15 @@ export default function Trainings() {
 
     return (
         <div>
-            <ReactTable filterable={true} defaultPageSize={20} data={trainings} columns={columns}/>
+            <ReactTable 
+                filterable={true} 
+                defaultPageSize={20} 
+                data={trainings} 
+                columns={columns} 
+                SubComponent={row => (
+                    <Showcustomer customer={row.original} />
+                )}
+            />
             <Snackbar
                 open={open}
                 autoHideDuration={4000}
