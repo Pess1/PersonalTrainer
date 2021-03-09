@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## This is the final project for Haaga Helia's Frontend development course
+
+The frontend was created on top of an existing backend that all the students used.
+The goal was to make a Frontend from which a personal trainer could keep up with their customers and at what times there are customer trainings. 
+I am not the best at picking colors but the UI otherwise is decently intuitive.
+
+The App should still be visible on heroku but might take a while to load since it is not in active use. (https://personaltrainerapp-pessi.herokuapp.com/)
+
+
+## Below is the original README for React apps if somebody clones the repo and needs those instructions for some unknown reason
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,32 +49,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
