@@ -30,7 +30,7 @@
     "react-gauge-chart": "^0.2.5",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-svg-gauge": "^1.0.10",
     "react-table-v6": "^6.8.6"
   },
